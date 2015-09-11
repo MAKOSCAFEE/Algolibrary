@@ -1,11 +1,11 @@
 import java.util.*;
 import java.io.*;
-public class QuickFindUnionFind {
+public class QuickFind {
 
 	private int [] data;
 	private int counts;
     // Initialize UnionFind data structure with N objects 
-	public QuickFindUnionFind (int N){
+	public QuickFind (int N){
 		counts =N;
         data= new int[N];
 	for (int i=0; i<N; i++ )
@@ -40,7 +40,7 @@ public class QuickFindUnionFind {
         int N =input.nextInt();
 
         // create the UnionFind object
-    	QuickFindUnionFind  qf = new QuickFindUnionFind (N);
+    	QuickFind  qf = new QuickFind (N);
     	// Read throught the whole file
     	while(input.hasNextInt()) {
 
