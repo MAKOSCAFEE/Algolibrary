@@ -4,17 +4,29 @@ public class QuickUnion {
 
 	private int [] data;
 	private int counts;
+    private int [] size;
     // Initialize QuickUnion data structure with N nodes of the tree
 	public QuickUnion (int N){
 		counts =N;
         data= new int[N];
+        //to keep track of weighted list
+        size = new int[N];
 	for (int i=0; i<N; i++ )
 		data[i]=i;
+    for (int i=0;i<N ;i++ ) {
+        // At first there is only one element in each index of an array
+        size[i]=1;
+    }
 	}
     //chase the parent pointers until you reach to the root of the tree
     //is to be private not to be called to the client side
     private int root(int p){
-        while(p!=data[p])p=data[p];
+        while(p!=data[p]){
+            
+            //flaten the tree even futher
+            data[p]=data[data[p]];
+            p=data[p];
+        }
 
         return p;
     }
@@ -23,7 +35,17 @@ public class QuickUnion {
 		// Get the coresponding root
 		int i = root(p);
 		int j = root(q);
-		data[i]=j;
+        //if they have the same root return
+        if(i==j)return;
+        if(size[i] < size[j]){
+            data[i]=j;
+            size[j]+=size[j];
+        } else {
+            data[j]=i;
+            size[i]+=size[j];
+        }
+        counts--;
+		
 	}
 	// Asks to find if two pair have the same root
 	public boolean unionConnected(int p,int q){
