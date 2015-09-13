@@ -1,12 +1,21 @@
-import java.util.*;
-import java.io.*;
-public class QuickUnion {
+/*----------------------------------------------------------------
+ *  Author:        Barnabas Makonda
+ *  Written:       10/09/2015
+ *  Last updated:  14/09/2015
+ *
+ *  The WeightedQuickUnionUF class represents a union-find data type
+ *  (also known as the disjoint-sets data type). 
+ *  It supports the union and find operations, along with a connected operation for determining whether two sites 
+ *  are in the same component and a count operation that returns the total number of components.
+ *
+ *----------------------------------------------------------------*/
+public class WeightedQuickUnionUF {
 
 	private int [] data;
 	private int counts;
     private int [] size;
-    // Initialize QuickUnion data structure with N nodes of the tree
-	public QuickUnion (int N){
+    // Initialize WeightedQuickUnionUF data structure with N nodes of the tree
+	public WeightedQuickUnionUF (int N){
 		counts =N;
         data= new int[N];
         //to keep track of weighted list
@@ -56,29 +65,4 @@ public class QuickUnion {
     public int count(){
     	return counts;
     }
-
-    public static void main(String[] args)throws FileNotFoundException {
-    	// Read data from the file one interger at a time
-    	Scanner input = new Scanner(new File("tinyUF.txt"));
-        
-        // Now read the first interger from the file
-        int N =input.nextInt();
-
-        // create the UnionFind object
-    	QuickUnion  qf = new QuickUnion (N);
-    	// Read throught the whole file
-    	while(input.hasNextInt()) {
-
-    		// Read the first interger
-    		int p = input.nextInt();
-    		// Read the next interger
-    		int q = input.nextInt();
-    		if(!qf.unionConnected(p,q)){
-    			qf.union(p,q);
-    			System.out.println(p+" "+ q);
-    		}
-
-    	};
-    }
-	
 }

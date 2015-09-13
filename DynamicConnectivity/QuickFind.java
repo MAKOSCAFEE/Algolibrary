@@ -1,5 +1,10 @@
-import java.util.*;
-import java.io.*;
+/*----------------------------------------------------------------
+ *  Author:        Barnabas Makonda
+ *  Written:       10/09/2015
+ *  Last updated:  14/09/2015
+ *
+ *----------------------------------------------------------------*/
+
 public class QuickFind {
 
 	private int [] data;
@@ -30,30 +35,5 @@ public class QuickFind {
     // Counts the number of objects in the component
     public int count(){
     	return counts;
-    }
-
-    public static void main(String[] args)throws FileNotFoundException {
-    	// Read data from the file one interger at a time
-    	Scanner input = new Scanner(new File("tinyUF.txt"));
-        
-        // Now read the first interger from the file
-        int N =input.nextInt();
-
-        // create the UnionFind object
-    	QuickFind  qf = new QuickFind (N);
-    	// Read throught the whole file
-    	while(input.hasNextInt()) {
-
-    		// Read the first interger
-    		int p = input.nextInt();
-    		// Read the next interger
-    		int q = input.nextInt();
-    		if(!qf.unionConnected(p,q)){
-    			qf.union(p,q);
-    			System.out.println(p+" "+ q);
-    		}
-
-    	};
-    }
-	
+    }	
 }
